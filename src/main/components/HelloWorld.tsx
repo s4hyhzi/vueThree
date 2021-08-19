@@ -1,28 +1,40 @@
 import classes from "./HelloWorld.module.less"
-import {ref, defineComponent} from 'vue'
+import {ref, defineComponent, reactive} from 'vue'
 import {ElButton} from "element-plus";
 
 export default defineComponent({
     name: 'HelloWorld',
     props: {
-        msg: {
-            type: String
-        }
+        msg: String
     },
-    data() {
-        return {
+    emits: ['ok'],
+    setup(props, {emit}) {
+        const helloWorld = ref()
+        let state = reactive({
             count: 0
+        })
+        const getCount = () => {
+            emit('ok', state.count)
+        }
+        const getPrint = (e: string) => {
+            console.log(e)
+        }
+        return {
+            state,
+            props,
+            getCount,
+            getPrint
         }
     },
-    setup: (props) => {
-        const count = ref(0)
-        return () => (
-            <div class={classes.helloWorld}>
-                <h1>{props.msg}</h1>
+    render() {
+        return (
+            <div ref={'helloWorld'} class={classes.helloWorld}>
+                <h1>{this.props.msg}</h1>
                 <ElButton type="primary" onClick={() => {
-                    count.value++
+                    this.state.count++;
+                    this.getCount()
                 }}>
-                    count is: {count.value}
+                    count is: {this.state.count}
                 </ElButton>
             </div>
         )

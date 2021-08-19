@@ -1,19 +1,38 @@
 import classes from './Main.module.less'
 import {ElButton} from "element-plus";
 import HelloWorld from "../components/HelloWorld";
+import {defineComponent, onMounted, reactive, ref} from "vue";
 
 const logo = new URL('../assets/logo.png', import.meta.url).href
 
-export default {
+export default defineComponent({
+    setup(props, {emit}) {
+        const hello = ref<any>()
+        onMounted(() => {
+            console.log(hello.value)
+            // hello.value.get
+            hello.value.getPrint('你好世界')
+        })
+        let state = reactive({
+            msg: `Hello Vue 3 + TypeScript + Vite`
+        })
+        return {
+            hello,
+            state,
+            props
+        }
+    },
     render() {
-        const msg = `Hello Vue 3 + TypeScript + Vite`
         return (
             <div id={classes.main}>
                 <img alt="Vue logo" src={logo}/>
                 <br/>
                 <ElButton>按钮</ElButton>
-                <HelloWorld msg={msg}/>
+                <HelloWorld onOk={(e) => {
+                    console.log(e)
+                }} msg={this.state.msg} ref={'hello'}/>
             </div>
         )
     }
-}
+})
+
