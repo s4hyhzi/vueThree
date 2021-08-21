@@ -1,4 +1,4 @@
-import classes from './Main.module.less'
+import './Main.less'
 import {ElButton} from "element-plus";
 import HelloWorld from "../components/HelloWorld";
 import {defineComponent, onMounted, reactive, ref} from "vue";
@@ -24,7 +24,7 @@ export default defineComponent({
     },
     render() {
         return (
-            <div id={classes.main}>
+            <div id={'main'}>
                 <img alt="Vue logo" src={logo}/>
                 <br/>
                 <ElButton>按钮</ElButton>

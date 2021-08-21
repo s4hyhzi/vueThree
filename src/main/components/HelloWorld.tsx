@@ -1,4 +1,4 @@
-import classes from "./HelloWorld.module.less"
+import "./HelloWorld.less"
 import {ref, defineComponent, reactive} from 'vue'
 import {ElButton} from "element-plus";
 
@@ -28,7 +28,7 @@ export default defineComponent({
     },
     render() {
         return (
-            <div ref={'helloWorld'} class={classes.helloWorld}>
+            <div ref={'helloWorld'} class={'helloWorld'}>
                 <h1>{this.props.msg}</h1>
                 <ElButton type="primary" onClick={() => {
                     this.state.count++;
