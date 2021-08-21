@@ -11,6 +11,7 @@ export default defineComponent({
         onMounted(() => {
             console.log(hello.value)
             // hello.value.get
+            console.log(import.meta.env.VITE_APP_BASE_API,14)
             hello.value.getPrint('你好世界')
         })
         let state = reactive({

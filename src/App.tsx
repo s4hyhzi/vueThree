@@ -6,6 +6,7 @@ export default defineComponent({
         NavBar
     },
     render() {
+
         return (
             <>
                 <NavBar class="top-nav-bar"></NavBar>
