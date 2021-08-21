@@ -8,7 +8,7 @@ export default defineComponent({
     render() {
         return (
             <>
-                <nav-bar className="top-nav-bar"></nav-bar>
+                <NavBar class="top-nav-bar"></NavBar>
                 <keep-alive exclude="">
                     <router-view></router-view>
                 </keep-alive>
